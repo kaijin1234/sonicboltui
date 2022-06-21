@@ -1,0 +1,6 @@
+.sb__btn {
+  background-color: rgb(234, 234, 21);
+}
+.sb__btn:hover {
+  cursor: pointer;
+}
