@@ -1,6 +1,13 @@
 .sb__btn {
-  background-color: rgb(234, 234, 21);
+   background-color: rgb(234, 234, 21);
+   border: none;
+   border-radius: 20px;
+   padding: 2px 20px;
+   color: white;
+   background-color: #c2b280;
+   transition: background-color 0.2s ease;
 }
 .sb__btn:hover {
-  cursor: pointer;
+   cursor: pointer;
+   background-color: #dac68d;
 }
