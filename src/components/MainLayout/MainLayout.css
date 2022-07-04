@@ -1,0 +1,81 @@
+main.sb__ml {
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   display: flex;
+   flex-direction: column;
+}
+
+main.sb__ml nav.sb__nav {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 60px;
+   display: flex;
+   align-items: center;
+   z-index: 1;
+}
+main.sb__ml nav.sb__nav .sb__logo {
+   width: 60px;
+   height: 60px;
+   background-color: black;
+   display: grid;
+   place-items: center;
+   transition: width 0.2s ease;
+}
+main.sb__ml nav.sb__nav .sb__logo object {
+   width: 80%;
+   height: 60px;
+}
+
+main.sb__ml div.sb__sidebar {
+   height: calc(100vh - 60px);
+   position: fixed;
+   top: 60px;
+   left: 0;
+   transition: width 0.2s ease;
+}
+
+main.sb__ml div.sb__content {
+   background-color: #f3f4f7;
+   position: absolute;
+   top: 60px;
+   transition: left 0.2s ease, width 0.2s ease;
+}
+
+/*..................... App related styles ............ */
+main.sb__ml[data-app="SIM"] nav.sb__nav {
+   background-color: #fcdc00;
+}
+main.sb__ml[data-app="PTS"] nav.sb__nav {
+   background-color: #263942;
+}
+main.sb__ml[data-app="PTS"] div.sb__sidebar {
+   background: #263942;
+}
+main.sb__ml[data-app="SIM"] div.sb__sidebar {
+   background: #1c252c;
+}
+/* ................................................. */
+
+/*.................... Sidebar is expanded? .............. */
+main.sb__ml[data-width="false"] div.sb__sidebar {
+   width: 60px;
+}
+main.sb__ml[data-width="true"] div.sb__sidebar {
+   width: 180px;
+}
+main.sb__ml[data-width="false"] div.sb__content {
+   width: calc(100% - 60px);
+   left: 60px;
+}
+main.sb__ml[data-width="true"] div.sb__content {
+   width: calc(100% - 180px);
+   left: 180px;
+}
+main.sb__ml[data-width="true"] nav.sb__nav .sb__logo {
+   width: 180px;
+}
+/* ........................................................ */

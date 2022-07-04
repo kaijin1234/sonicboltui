@@ -6,6 +6,7 @@ import dts from "rollup-plugin-dts"
 import { terser } from "rollup-plugin-terser"
 import peerDepsExternal from "rollup-plugin-peer-deps-external"
 import excludeDependenciesFromBundle from "rollup-plugin-exclude-dependencies-from-bundle"
+import svgr from "@svgr/rollup"
 const packageJson = require("./package.json")
 
 export default [
@@ -28,6 +29,7 @@ export default [
             dependencies: true,
             peerDependencies: true,
          }),
+         svgr(),
          peerDepsExternal(),
          resolve(),
          commonjs(),
