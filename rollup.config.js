@@ -7,6 +7,7 @@ import { terser } from "rollup-plugin-terser"
 import peerDepsExternal from "rollup-plugin-peer-deps-external"
 import excludeDependenciesFromBundle from "rollup-plugin-exclude-dependencies-from-bundle"
 import svgr from "@svgr/rollup"
+import url from "@rollup/plugin-url"
 const packageJson = require("./package.json")
 
 export default [
@@ -29,13 +30,15 @@ export default [
             dependencies: true,
             peerDependencies: true,
          }),
-         svgr(),
          peerDepsExternal(),
          resolve(),
          commonjs(),
+         url(),
+         svgr({ typescript: true }),
          typescript({
             tsconfig: "./tsconfig.json",
          }),
+
          postcss(),
          terser(),
       ],

@@ -1,7 +1,7 @@
 import React from "react"
 import "./MainLayout.css"
-import { ReactComponent as SIMLogo } from "../../assets/sim_logo_icon.svg"
-import { ReactComponent as SIMLogoFull } from "../../assets/sim_logo_full.svg"
+import SIMLogo from "../../assets/sim_logo_icon.svg"
+import SIMLogoFull from "../../assets/sim_logo_full.svg"
 export interface IMainLayoutProps {
    app?: String
    isExpanded: boolean
@@ -18,7 +18,11 @@ const MainLayout: React.FC<IMainLayoutProps> = ({
       <main className="sb__ml" data-app={app} data-width={isExpanded}>
          <nav className="sb__nav">
             <div className="sb__logo">
-               {isExpanded ? <SIMLogoFull /> : <SIMLogo />}
+               {isExpanded ? (
+                  <SIMLogoFull style={{ width: "180px", height: "60px" }} />
+               ) : (
+                  <SIMLogo style={{ width: "60px", height: "60px" }} />
+               )}
             </div>
          </nav>
          <div className="sb__sidebar">sidebar</div>

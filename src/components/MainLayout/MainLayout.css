@@ -21,12 +21,12 @@ main.sb__ml nav.sb__nav .sb__logo {
    width: 60px;
    height: 60px;
    background-color: black;
-   display: grid;
-   place-items: center;
+   display: flex;
+   align-items: center;
    transition: width 0.2s ease;
+   overflow-x: hidden;
 }
-main.sb__ml nav.sb__nav .sb__logo object {
-   width: 80%;
+main.sb__ml nav.sb__nav .sb__logo svg {
    height: 60px;
 }
 
