@@ -7,6 +7,9 @@
    "publishConfig": {
       "registry": "https://npm.pkg.github.com/kaijin1234"
    },
+   "repository": {
+      "url": "git@github.com:kaijin1234/sonicboltui.git"
+   },
    "files": [
       "dist"
    ],

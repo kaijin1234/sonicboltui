@@ -1,7 +1,7 @@
 import React from "react"
 import "./MainLayout.css"
-import SIMLogo from "../../assets/sim_logo_icon.svg"
-import SIMLogoFull from "../../assets/sim_logo_full.svg"
+import { ReactComponent as SIMLogo } from "../../assets/sim_logo_icon.svg"
+import { ReactComponent as SIMLogoFull } from "../../assets/sim_logo_full.svg"
 export interface IMainLayoutProps {
    app?: String
    isExpanded: boolean

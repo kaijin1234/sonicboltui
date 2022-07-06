@@ -107,9 +107,11 @@
       "outDir": "dist",
       "moduleResolution": "node",
       "allowSyntheticDefaultImports": true,
-      "emitDeclarationOnly": true
+      "lib": ["es5", "es2015", "es2016", "dom", "esnext"],
+      "emitDeclarationOnly": true,
+      "types": ["node"]
    },
-   // "include": ["src/**/*.ts", "src/**/*.tsx"],
+   "include": ["src/**/*.ts", "src/**/*.tsx", "src/custom.d.ts"],
    "exclude": [
       "**/__tests__",
       "**/*.test.ts",
