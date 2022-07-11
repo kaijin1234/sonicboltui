@@ -1,8 +1,11 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
-import Button from "./Button";
-test("adds 1 + 2 to equal 3", () => {
-  expect(3).toBe(3);
-  render(<Button>kjashdkjsah</Button>);
-  expect(screen.queryByText("kjashdkjsah")).not.toBeNull();
-});
+import React from "react"
+import { render, screen } from "@testing-library/react"
+import Button from "./Button"
+test("Button renders right text", () => {
+   render(<Button>children</Button>)
+   expect(screen.queryByText("children")).not.toBeNull()
+   render(<Button label="label">not render</Button>)
+   expect(screen.queryByText("label")).not.toBeNull()
+   render(<Button>text</Button>)
+   expect(screen.queryByText("Button")).not.toBeNull()
+})

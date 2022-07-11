@@ -21,13 +21,19 @@ main.sb__ml nav.sb__nav .sb__logo {
    width: 60px;
    height: 60px;
    background-color: black;
-   display: flex;
-   align-items: center;
+   display: grid;
+   place-items: center;
    transition: width 0.2s ease;
    overflow-x: hidden;
 }
-main.sb__ml nav.sb__nav .sb__logo svg {
-   height: 60px;
+main.sb__ml nav.sb__nav .sb__logo svg path {
+   fill: white !important;
+}
+main.sb__ml nav.sb__nav button.sb_ham_btn {
+   border: none;
+   background-color: transparent;
+   margin-left: 10px;
+   cursor: pointer;
 }
 
 main.sb__ml div.sb__sidebar {
@@ -51,6 +57,20 @@ main.sb__ml[data-app="SIM"] nav.sb__nav {
 }
 main.sb__ml[data-app="PTS"] nav.sb__nav {
    background-color: #263942;
+}
+main.sb__ml[data-app="PTS"] nav.sb__nav button.sb_ham_btn svg path {
+   fill: #3fcbc8;
+   transition: fill 0.2s ease;
+}
+main.sb__ml[data-app="PTS"] nav.sb__nav button.sb_ham_btn:hover svg path {
+   fill: #56f2ef;
+}
+main.sb__ml[data-app="SIM"] nav.sb__nav button.sb_ham_btn svg path {
+   fill: #263942;
+   transition: fill 0.2s ease;
+}
+main.sb__ml[data-app="SIM"] nav.sb__nav button.sb_ham_btn:hover svg path {
+   fill: #6b633f;
 }
 main.sb__ml[data-app="PTS"] div.sb__sidebar {
    background: #263942;

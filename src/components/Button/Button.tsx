@@ -10,14 +10,20 @@ export interface IButtonProps
     * Button label
     */
    label?: string
+   style?: React.CSSProperties
+   onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined
 }
 
-const Button: React.FC<IButtonProps> = (props) => {
-   const { children, style, label } = props
+const Button: React.FC<IButtonProps> = ({
+   children,
+   style,
+   label,
+   ...otherProps
+}) => {
    const content = label || children || "Button"
    let _style: React.CSSProperties = style || {}
    return (
-      <button type="button" className="sb__btn" style={_style}>
+      <button type="button" className="sb__btn" style={_style} {...otherProps}>
          {content}
       </button>
    )
