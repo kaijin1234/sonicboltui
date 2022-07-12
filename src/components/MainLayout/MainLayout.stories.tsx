@@ -2,6 +2,7 @@ import React from "react"
 import { ComponentStory, ComponentMeta } from "@storybook/react"
 
 import { MainLayout, useSideBarCtx } from "./MainLayout"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
    title: "Lib/MainLayout",
@@ -14,7 +15,11 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof MainLayout> = (args) => (
-   <MainLayout {...args} />
+   <BrowserRouter>
+      <Routes>
+         <Route path="*" element={<MainLayout {...args} />} />
+      </Routes>
+   </BrowserRouter>
 )
 
 export const MainLayoutComp = Template.bind({})

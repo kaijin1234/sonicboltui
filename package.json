@@ -54,6 +54,7 @@
       "postcss": "^8.4.14",
       "react": "^17.0.0",
       "react-dom": "^17.0.0",
+      "react-router-dom": "^6.3.0",
       "rollup": "^2.75.7",
       "rollup-plugin-dts": "^4.2.2",
       "rollup-plugin-exclude-dependencies-from-bundle": "^1.1.22",
@@ -66,6 +67,7 @@
    },
    "peerDependencies": {
       "react": "^17.0.0 || ^18.0.0",
-      "react-dom": "^17.0.0 || ^18.0.0"
+      "react-dom": "^17.0.0 || ^18.0.0",
+      "react-router-dom": "^6.3.0"
    }
 }

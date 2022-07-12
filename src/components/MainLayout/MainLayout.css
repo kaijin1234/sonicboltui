@@ -5,6 +5,7 @@ main.sb__ml {
    right: 0;
    display: flex;
    flex-direction: column;
+   font-family: sans-serif;
 }
 
 main.sb__ml nav.sb__nav {
@@ -23,7 +24,7 @@ main.sb__ml nav.sb__nav .sb__logo {
    background-color: black;
    display: grid;
    place-items: center;
-   transition: width 0.2s ease;
+   /* transition: width 0.2s ease; */
    overflow-x: hidden;
 }
 main.sb__ml nav.sb__nav .sb__logo svg path {
@@ -41,19 +42,82 @@ main.sb__ml div.sb__sidebar {
    position: fixed;
    top: 60px;
    left: 0;
-   transition: width 0.2s ease;
+   z-index: 1;
+   overflow: hidden;
+}
+main.sb__ml div.sb__sidebar ul {
+   margin: 44px 0 0 0;
+   padding: 0;
+   width: 212px;
+}
+main.sb__ml div.sb__sidebar ul li {
+   display: flex;
+   align-items: center;
+   height: 50px;
+   font-size: 0.8em;
+   transition: background 0.3s ease;
+   position: relative;
+}
+main.sb__ml div.sb__sidebar ul li:hover {
+   background-color: #303f4b;
+}
+
+main.sb__ml div.sb__sidebar ul li div {
+   width: 60px;
+   display: grid;
+   place-items: center;
+}
+main.sb__ml div.sb__sidebar ul li span {
+   transition-property: opacity;
+   transition-duration: 0.2s;
+   transition-timing-function: ease;
+   transition-delay: 0.2s;
+}
+main.sb__ml div.sb__sidebar ul li div svg {
+   width: 20px;
+}
+main.sb__ml div.sb__sidebar ul li div svg path {
+   fill: #5a899d;
+}
+main.sb__ml div.sb__sidebar ul a {
+   color: white;
+   text-decoration: none;
 }
 
 main.sb__ml div.sb__content {
    background-color: #f3f4f7;
    position: absolute;
    top: 60px;
-   transition: left 0.2s ease, width 0.2s ease;
 }
 
 /*..................... App related styles ............ */
 main.sb__ml[data-app="SIM"] nav.sb__nav {
    background-color: #fcdc00;
+}
+main.sb__ml[data-app="SIM"] nav.sb__nav button.sb_ham_btn svg path {
+   fill: #263942;
+   transition: fill 0.2s ease;
+}
+main.sb__ml[data-app="SIM"] nav.sb__nav button.sb_ham_btn:hover svg path {
+   fill: #6b633f;
+}
+main.sb__ml[data-app="SIM"] div.sb__sidebar {
+   background: #1c252c;
+}
+main.sb__ml[data-app="SIM"] div.sb__sidebar ul li.active {
+   background-color: #fcdc00;
+   color: black;
+   transition: background 0s;
+}
+main.sb__ml[data-app="SIM"] div.sb__sidebar ul li div svg path {
+   fill: #c2b280;
+}
+main.sb__ml[data-app="SIM"] div.sb__sidebar ul li.active div svg path {
+   fill: #33454d !important;
+}
+
+main.sb__ml[data-app="PTS"] div.sb__sidebar {
+   background: #263942;
 }
 main.sb__ml[data-app="PTS"] nav.sb__nav {
    background-color: #263942;
@@ -65,18 +129,16 @@ main.sb__ml[data-app="PTS"] nav.sb__nav button.sb_ham_btn svg path {
 main.sb__ml[data-app="PTS"] nav.sb__nav button.sb_ham_btn:hover svg path {
    fill: #56f2ef;
 }
-main.sb__ml[data-app="SIM"] nav.sb__nav button.sb_ham_btn svg path {
-   fill: #263942;
-   transition: fill 0.2s ease;
+main.sb__ml[data-app="PTS"] div.sb__sidebar ul li.active {
+   background-color: #3fcbc8;
+   transition: background 0s ease;
+   color: black;
 }
-main.sb__ml[data-app="SIM"] nav.sb__nav button.sb_ham_btn:hover svg path {
-   fill: #6b633f;
+main.sb__ml[data-app="PTS"] div.sb__sidebar ul li.active {
+   background-color: #3fcbc8;
 }
-main.sb__ml[data-app="PTS"] div.sb__sidebar {
-   background: #263942;
-}
-main.sb__ml[data-app="SIM"] div.sb__sidebar {
-   background: #1c252c;
+main.sb__ml[data-app="PTS"] div.sb__sidebar ul li.active div svg path {
+   fill: #33454d;
 }
 /* ................................................. */
 
@@ -85,17 +147,55 @@ main.sb__ml[data-width="false"] div.sb__sidebar {
    width: 60px;
 }
 main.sb__ml[data-width="true"] div.sb__sidebar {
-   width: 180px;
+   width: 212px;
 }
 main.sb__ml[data-width="false"] div.sb__content {
    width: calc(100% - 60px);
    left: 60px;
 }
 main.sb__ml[data-width="true"] div.sb__content {
-   width: calc(100% - 180px);
-   left: 180px;
+   width: calc(100% - 212px);
+   left: 212px;
 }
 main.sb__ml[data-width="true"] nav.sb__nav .sb__logo {
-   width: 180px;
+   width: 212px;
+}
+
+main.sb__ml[data-width="false"] div.sb__sidebar ul li span {
+   opacity: 0;
+}
+main.sb__ml[data-width="true"] div.sb__sidebar ul li span {
+   opacity: 1;
+}
+main.sb__ml[data-width="false"] div.sb__sidebar ul li::before {
+   opacity: 0;
+   position: fixed;
+   display: none;
+   align-items: center;
+   left: 60px;
+   padding-left: 8px;
+   width: 152px;
+   height: 50px;
+   content: attr(data-label);
+   white-space: nowrap;
+   color: color;
+   background-color: #303f4b;
+   font-size: small;
+}
+main.sb__ml[data-width="false"] div.sb__sidebar ul li:hover::before {
+   display: flex;
+   opacity: 1;
 }
 /* ........................................................ */
+main.sb__ml[data-app="PTS"][data-width="false"]
+   div.sb__sidebar
+   ul
+   li.active:hover::before {
+   background-color: #3fcbc8;
+}
+main.sb__ml[data-app="SIM"][data-width="false"]
+   div.sb__sidebar
+   ul
+   li.active:hover::before {
+   background-color: #fcdc00;
+}

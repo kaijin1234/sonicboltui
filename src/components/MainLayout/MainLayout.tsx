@@ -1,10 +1,24 @@
 import React, { createContext, useContext, useState } from "react"
 import "./MainLayout.css"
-import { ReactComponent as SIMLogo } from "../../assets/sim_logo_icon.svg"
-import { ReactComponent as SIMLogoFull } from "../../assets/sim_logo_full.svg"
-import { ReactComponent as PTSLogo } from "../../assets/pts_logo_mark.svg"
-import { ReactComponent as PTSLogoFull } from "../../assets/pts_logo_full.svg"
-import { ReactComponent as HamburgerMenu } from "../../assets/01_hamburger.svg"
+import { Link, useLocation } from "react-router-dom"
+import {
+   HamburgerSVG,
+   DashboardSVG,
+   PersonnelStatsSVG,
+   PersonnelMgmtSVG,
+   ProjectMgmtSVG,
+   SIMLogoSVG,
+   SIMLogoFullSVG,
+   PTSLogoSVG,
+   PTSLogoFullSVG,
+   BuildingStatsSVG,
+   BIMSVG,
+   AlarmsSVG,
+   EventsSVG,
+   ReportsSVG,
+   ScheduleSVG,
+   WorkMgmtSVG,
+} from "../../assets/svgs/svg.logo"
 
 type TApp = "SIM" | "PTS"
 interface IMainLayoutProps {
@@ -16,34 +30,16 @@ interface ISidebar {
    isExpanded: boolean
    toggleSidebar: () => void
 }
-const SideBarCtx = React.createContext<ISidebar>({
-   isExpanded: false,
-   toggleSidebar() {},
-})
-export const useSideBarCtx = () => useContext(SideBarCtx)
-
-const getLogo = (app: TApp, isFull: boolean) => {
-   switch (app) {
-      case "SIM":
-         if (isFull)
-            return <SIMLogoFull style={{ width: "160px", height: "55px" }} />
-         return <SIMLogo style={{ width: "51px", height: "51px" }} />
-      case "PTS":
-         if (isFull)
-            return <PTSLogoFull style={{ width: "160px", height: "55px" }} />
-         return <PTSLogo style={{ width: "51px", height: "51px" }} />
-
-      default:
-         return <></>
-   }
-}
 
 export const MainLayout: React.FC<IMainLayoutProps> = ({
    app = "PTS",
    children,
 }) => {
+   const { pathname } = useLocation()
+   console.log("history", pathname)
    const [isExpanded, setIsExpanded] = useState(false)
    const Logo = getLogo(app, isExpanded)
+   const sidebarLinks = getSidebarData(app, pathname)
    const toggleSidebar = () => {
       setIsExpanded((prev) => !prev)
    }
@@ -52,10 +48,10 @@ export const MainLayout: React.FC<IMainLayoutProps> = ({
          <nav className="sb__nav">
             <div className="sb__logo">{Logo}</div>
             <button className="sb_ham_btn" onClick={toggleSidebar}>
-               <HamburgerMenu style={{ width: "1.2rem" }} />
+               <HamburgerSVG style={{ width: "1.2rem" }} />
             </button>
          </nav>
-         <div className="sb__sidebar"></div>
+         <div className="sb__sidebar">{sidebarLinks}</div>
          <div className="sb__content">
             <SideBarCtx.Provider value={{ isExpanded, toggleSidebar }}>
                {children}
@@ -65,21 +61,129 @@ export const MainLayout: React.FC<IMainLayoutProps> = ({
    )
 }
 
-//  export interface ISidebarProps {
-//    children: React.ReactNode;
-//  }
+const SideBarCtx = createContext<ISidebar>({
+   isExpanded: false,
+   toggleSidebar() {},
+})
+const getLogo = (app: TApp, isFull: boolean) => {
+   switch (app) {
+      case "SIM":
+         if (isFull)
+            return <SIMLogoFullSVG style={{ width: "160px", height: "55px" }} />
+         return <SIMLogoSVG style={{ width: "51px", height: "51px" }} />
+      case "PTS":
+         if (isFull)
+            return <PTSLogoFullSVG style={{ width: "160px", height: "55px" }} />
+         return <PTSLogoSVG style={{ width: "51px", height: "51px" }} />
 
-//  export const SideBarStatusProvider: React.FC<ISidebarProps> = (props) => {
-//    const { children } = props;
-//    const [isExpanded, setIsExpanded] = useState(false);
+      default:
+         return <></>
+   }
+}
+const sidebarData = {
+   sim: [
+      {
+         link: "/dashboard",
+         label: "Dashboard",
+         icon: <DashboardSVG />,
+      },
+      {
+         link: "/building-stats",
+         label: "Building Stats",
+         icon: <BuildingStatsSVG />,
+      },
+      {
+         link: "/bim",
+         label: "BIM",
+         icon: <BIMSVG />,
+      },
+      {
+         link: "/alarms",
+         label: "Alarms",
+         icon: <AlarmsSVG />,
+      },
+      {
+         link: "/events",
+         label: "Events",
+         icon: <EventsSVG />,
+      },
+      {
+         link: "/reports",
+         label: "Reports",
+         icon: <ReportsSVG />,
+      },
+      {
+         link: "/schedule",
+         label: "Schedule",
+         icon: <ScheduleSVG />,
+      },
+      {
+         link: "/work-mgmt",
+         label: "Work Management",
+         icon: <WorkMgmtSVG />,
+      },
+   ],
+   pts: [
+      {
+         link: "/dashboard",
+         label: "Dashboard",
+         icon: <DashboardSVG />,
+      },
+      {
+         link: "/personnel-stats",
+         label: "Personnel Stats",
+         icon: <PersonnelStatsSVG />,
+      },
+      {
+         link: "/personnel-mgmt",
+         label: "Personnel Management",
+         icon: <PersonnelMgmtSVG />,
+      },
+      {
+         link: "/project-mgmt",
+         label: "Project Management",
+         icon: <ProjectMgmtSVG />,
+      },
+   ],
+}
+const getSidebarData = (app: TApp, pathname: string) => {
+   switch (app) {
+      case "SIM":
+         return (
+            <ul>
+               {sidebarData["sim"].map((route) => (
+                  <Link to={route.link} key={route.link}>
+                     <li
+                        className={`${pathname === route.link ? "active" : ""}`}
+                        data-label={route.label}
+                     >
+                        <div>{route.icon}</div>
+                        <span>{route.label}</span>
+                     </li>
+                  </Link>
+               ))}
+            </ul>
+         )
 
-//    const toggleSidebar = () => {
-//      setIsExpanded((prev) => !prev);
-//    };
+      case "PTS":
+         return (
+            <ul>
+               {sidebarData["pts"].map((route) => (
+                  <Link to={route.link} key={route.link}>
+                     <li
+                        className={`${pathname === route.link ? "active" : ""}`}
+                        data-label={route.label}
+                     >
+                        <div>{route.icon}</div>
+                        <span>{route.label}</span>
+                     </li>
+                  </Link>
+               ))}
+            </ul>
+         )
+      default:
+         return <></>
+   }
+}
 
-//    return (
-//      <SideBarCtx.Provider value={{ isExpanded, toggleSidebar }}>
-//        {children}
-//      </SideBarCtx.Provider>
-//    );
-//  };
+export const useSideBarCtx = () => useContext(SideBarCtx)
