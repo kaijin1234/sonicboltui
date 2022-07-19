@@ -83,6 +83,34 @@ main.sb__ml div.sb__sidebar ul a {
    color: white;
    text-decoration: none;
 }
+main.sb__ml div.sb__sidebar div.sb_logo_text {
+   position: absolute;
+   bottom: 20px;
+   display: flex;
+   width: 100%;
+   justify-content: center;
+}
+main.sb__ml div.sb__sidebar div.sb_logo_text div.sb--hovered {
+   position: fixed;
+   align-items: center;
+   left: 60px;
+   bottom: 10px;
+   padding-left: 8px;
+   width: 152px;
+   height: 50px;
+}
+main.sb__ml div.sb__sidebar div.sb_logo_text div.sb--hovered img {
+   width: 140px;
+}
+main.sb__ml div.sb__sidebar div.sb_logo_text svg {
+   width: 2rem;
+}
+main.sb__ml div.sb__sidebar div.sb_logo_text svg path {
+   fill: white;
+}
+main.sb__ml div.sb__sidebar div.sb_logo_text img {
+   width: 140px;
+}
 
 main.sb__ml div.sb__content {
    background-color: #f3f4f7;
@@ -115,6 +143,9 @@ main.sb__ml[data-app="SIM"] div.sb__sidebar ul li div svg path {
 main.sb__ml[data-app="SIM"] div.sb__sidebar ul li.active div svg path {
    fill: #33454d !important;
 }
+main.sb__ml[data-app="SIM"] div.sb__sidebar div.sb_logo_text div.sb--hovered {
+   background-color: #1c252c;
+}
 
 main.sb__ml[data-app="PTS"] div.sb__sidebar {
    background: #263942;
@@ -139,6 +170,9 @@ main.sb__ml[data-app="PTS"] div.sb__sidebar ul li.active {
 }
 main.sb__ml[data-app="PTS"] div.sb__sidebar ul li.active div svg path {
    fill: #33454d;
+}
+main.sb__ml[data-app="PTS"] div.sb__sidebar div.sb_logo_text div.sb--hovered {
+   background-color: #263942;
 }
 /* ................................................. */
 

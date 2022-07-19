@@ -28,17 +28,3 @@ MainLayoutComp.args = {
    app: "PTS",
    children: <div style={{ height: "800px" }}>Custom component</div>,
 }
-
-export const Mainctx = () => {
-   return (
-      <MainLayout app="PTS">
-         <CHild />
-      </MainLayout>
-   )
-}
-
-const CHild = () => {
-   const { isExpanded, toggleSidebar } = useSideBarCtx()
-   console.log("isExpanded", isExpanded)
-   return <button onClick={toggleSidebar}>{isExpanded + ""}</button>
-}

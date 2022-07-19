@@ -14,6 +14,12 @@ module.exports = ({ config }) => {
       include: [AppSourceDir],
       use: ["@svgr/webpack", "url-loader"],
    })
+   config.module.rules.push({
+      test: /\.(png|jpg|jepg|gif)$/i,
+      include: [AppSourceDir],
+      // use: ["@svgr/webpack", "file-loader"],
+      type: "asset/resource",
+   })
 
    return config
 }

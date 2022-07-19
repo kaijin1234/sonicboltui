@@ -8,6 +8,7 @@ import peerDepsExternal from "rollup-plugin-peer-deps-external"
 import excludeDependenciesFromBundle from "rollup-plugin-exclude-dependencies-from-bundle"
 import svgr from "@svgr/rollup"
 import url from "@rollup/plugin-url"
+import image from "@rollup/plugin-image"
 const packageJson = require("./package.json")
 
 export default [
@@ -30,6 +31,7 @@ export default [
             dependencies: true,
             peerDependencies: true,
          }),
+         image(),
          peerDepsExternal(),
          resolve(),
          commonjs(),

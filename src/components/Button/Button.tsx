@@ -20,4 +20,4 @@ const Button: React.FC<IButtonProps> = ({ children, label, ...otherProps }) => {
       </button>
    )
 }
-export default Button
+export { Button }

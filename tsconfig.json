@@ -114,6 +114,7 @@
    "include": ["src/**/*.ts", "src/**/*.tsx", "src/custom.d.ts"],
    "exclude": [
       "**/__tests__",
+      "**/__mocks__",
       "**/*.test.ts",
       "**/*.test.tsx",
       "**/*.test.js",

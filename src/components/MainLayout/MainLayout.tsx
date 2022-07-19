@@ -18,8 +18,9 @@ import {
    ReportsSVG,
    ScheduleSVG,
    WorkMgmtSVG,
+   SonicboltLogoSVG,
 } from "../../assets/svgs/svg.logo"
-
+import SonicboltIMG from "../../assets/images/sonicbolt.png"
 type TApp = "SIM" | "PTS"
 interface IMainLayoutProps {
    app?: TApp
@@ -31,27 +32,57 @@ interface ISidebar {
    toggleSidebar: () => void
 }
 
-export const MainLayout: React.FC<IMainLayoutProps> = ({
-   app = "PTS",
-   children,
-}) => {
+const MainLayout: React.FC<IMainLayoutProps> = ({ app = "PTS", children }) => {
    const { pathname } = useLocation()
-   console.log("history", pathname)
    const [isExpanded, setIsExpanded] = useState(false)
+   const [isHovered, setIsHovered] = useState(false)
    const Logo = getLogo(app, isExpanded)
    const sidebarLinks = getSidebarData(app, pathname)
    const toggleSidebar = () => {
       setIsExpanded((prev) => !prev)
    }
    return (
-      <main className="sb__ml" data-app={app} data-width={isExpanded}>
+      <main
+         className="sb__ml"
+         data-app={app}
+         data-width={isExpanded}
+         data-testid="mainlayout"
+      >
          <nav className="sb__nav">
             <div className="sb__logo">{Logo}</div>
-            <button className="sb_ham_btn" onClick={toggleSidebar}>
+            <button
+               className="sb_ham_btn"
+               onClick={toggleSidebar}
+               data-testid="layoutbtn"
+            >
                <HamburgerSVG style={{ width: "1.2rem" }} />
             </button>
          </nav>
-         <div className="sb__sidebar">{sidebarLinks}</div>
+         <div className="sb__sidebar">
+            {sidebarLinks}
+            <div className="sb_logo_text">
+               {isExpanded ? (
+                  <img src={SonicboltIMG} alt="sonicbolt" />
+               ) : (
+                  <>
+                     <SonicboltLogoSVG
+                        onMouseOver={() => setIsHovered(true)}
+                        onMouseLeave={() => setIsHovered(false)}
+                        data-testid="sblogo"
+                     />
+                     {isHovered && (
+                        <div className="sb--hovered" data-testid="sbimage">
+                           <img
+                              className=""
+                              src={SonicboltIMG}
+                              alt="sonicbolt"
+                           />
+                        </div>
+                     )}
+                  </>
+               )}
+            </div>
+         </div>
          <div className="sb__content">
             <SideBarCtx.Provider value={{ isExpanded, toggleSidebar }}>
                {children}
@@ -158,7 +189,7 @@ const getSidebarData = (app: TApp, pathname: string) => {
                         data-label={route.label}
                      >
                         <div>{route.icon}</div>
-                        <span>{route.label}</span>
+                        <span data-testid="applabel">{route.label}</span>
                      </li>
                   </Link>
                ))}
@@ -175,7 +206,7 @@ const getSidebarData = (app: TApp, pathname: string) => {
                         data-label={route.label}
                      >
                         <div>{route.icon}</div>
-                        <span>{route.label}</span>
+                        <span data-testid="applabel">{route.label}</span>
                      </li>
                   </Link>
                ))}
@@ -186,4 +217,6 @@ const getSidebarData = (app: TApp, pathname: string) => {
    }
 }
 
-export const useSideBarCtx = () => useContext(SideBarCtx)
+const useSideBarCtx = () => useContext(SideBarCtx)
+
+export { MainLayout, useSideBarCtx }
