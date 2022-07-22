@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { MaximizeSVG, MinimizeSVG } from "../../assets/svgs/svg.logo"
 import { useSideBarCtx } from "../MainLayout"
 import { Logo } from "../shared/Logo"
@@ -55,6 +55,11 @@ const Container: React.FC<IContainerProps> = ({
    const { app, isExpanded } = useSideBarCtx()
    if (width) style.width = width
    if (height) style.height = height
+   useEffect(() => {
+      if (isFullScreen) document.body.style.overflow = "hidden"
+      else document.body.style.overflow = "auto"
+   }, [isFullScreen])
+
    return (
       <section
          className={`

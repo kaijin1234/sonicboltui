@@ -43,6 +43,22 @@ const Template2: ComponentStory<typeof Container> = (args) => (
             title="Heyy"
             buttons={<Btns />}
          />
+         <Container
+            {...args}
+            // style={{ width: "300px", height: "200px" }}
+            width="90%"
+            height="300px"
+            title="Heyy"
+            buttons={<Btns />}
+         />
+         <Container
+            {...args}
+            // style={{ width: "300px", height: "200px" }}
+            width="90%"
+            height="300px"
+            title="Heyy"
+            buttons={<Btns />}
+         />
       </MainLayout>
    </BrowserRouter>
 )
