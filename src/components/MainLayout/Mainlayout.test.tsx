@@ -1,7 +1,7 @@
 import React from "react"
 import { fireEvent, render, screen } from "@testing-library/react"
 import { MainLayout, useSideBarCtx } from "./MainLayout"
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { BrowserRouter } from "react-router-dom"
 
 describe("MainLayout component", () => {
    test("Mainlayout renders on screen", () => {
@@ -81,5 +81,23 @@ describe("MainLayout component", () => {
       )
       fireEvent.mouseOver(screen.getByTestId("sblogo"))
       expect(screen.getByTestId("sbimage")).not.toBeNull()
+   })
+   test("should render sonicbolt svg when sidebar is not expanded", () => {
+      render(
+         <BrowserRouter>
+            <MainLayout>children</MainLayout>
+         </BrowserRouter>
+      )
+      expect(screen.getByTestId("sblogo")).not.toBeNull()
+   })
+   test("should not render any links", () => {
+      render(
+         <BrowserRouter>
+            {/*//@ts-ignore */}
+            <MainLayout app="sim">children</MainLayout>
+         </BrowserRouter>
+      )
+
+      expect(screen.queryAllByTestId("linklist")).toHaveLength(0)
    })
 })

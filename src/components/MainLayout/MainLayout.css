@@ -1,3 +1,6 @@
+.sb__shadow {
+   box-shadow: 0 0px 3px rgb(173, 173, 173);
+}
 main.sb__ml {
    position: absolute;
    top: 0;
@@ -18,18 +21,7 @@ main.sb__ml nav.sb__nav {
    align-items: center;
    z-index: 1;
 }
-main.sb__ml nav.sb__nav .sb__logo {
-   width: 60px;
-   height: 60px;
-   background-color: black;
-   display: grid;
-   place-items: center;
-   /* transition: width 0.2s ease; */
-   overflow-x: hidden;
-}
-main.sb__ml nav.sb__nav .sb__logo svg path {
-   fill: white !important;
-}
+
 main.sb__ml nav.sb__nav button.sb_ham_btn {
    border: none;
    background-color: transparent;
@@ -116,6 +108,10 @@ main.sb__ml div.sb__content {
    background-color: #f3f4f7;
    position: absolute;
    top: 60px;
+   min-height: calc(100vh - 60px);
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
 }
 
 /*..................... App related styles ............ */
@@ -190,9 +186,6 @@ main.sb__ml[data-width="false"] div.sb__content {
 main.sb__ml[data-width="true"] div.sb__content {
    width: calc(100% - 212px);
    left: 212px;
-}
-main.sb__ml[data-width="true"] nav.sb__nav .sb__logo {
-   width: 212px;
 }
 
 main.sb__ml[data-width="false"] div.sb__sidebar ul li span {

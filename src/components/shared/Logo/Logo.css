@@ -1,0 +1,16 @@
+main.sb__ml .sb__logo {
+   width: 60px;
+   height: 60px;
+   background-color: black;
+   display: grid;
+   place-items: center;
+   /* transition: width 0.2s ease; */
+   overflow-x: hidden;
+}
+main.sb__ml .sb__logo svg path {
+   fill: white !important;
+}
+
+main.sb__ml[data-width="true"] .sb__logo {
+   width: 212px;
+}

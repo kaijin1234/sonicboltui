@@ -1,0 +1,78 @@
+.sb__container {
+   padding: 0;
+   line-height: normal;
+   border-radius: 0.2rem;
+   background-color: white;
+}
+
+.sb__container.fullscreen {
+   position: fixed;
+   top: 0;
+   left: 0;
+   border-radius: 0;
+   min-width: 100vw;
+   min-height: 100vh;
+   z-index: 100;
+}
+header.sb__container__header {
+   width: 100%;
+   display: flex;
+   align-items: center;
+   border-bottom: 1px solid rgb(212, 212, 212);
+}
+.sb__container__header__title {
+   font-weight: bolder;
+   display: flex;
+   align-items: center;
+}
+.sb__container__header__title svg {
+   margin-right: 5px;
+}
+.sb__container__header__buttons {
+   margin-block: 5px;
+   margin-right: 10px;
+}
+
+header.sb__container__header button:last-child {
+   background-color: transparent;
+   border: none;
+   cursor: pointer;
+}
+header.sb__container__header svg {
+   width: 1.2rem;
+}
+.sb__container[data-app="PTS"].fullscreen header.sb__container__header {
+   background: #263942;
+   border: none;
+}
+.sb__container[data-app="SIM"].fullscreen header.sb__container__header {
+   background: #fcdc00;
+   border: none;
+}
+.sb__container[data-app="PTS"].fullscreen .sb__container__header__title {
+   color: white;
+}
+.sb__container[data-app="SIM"].fullscreen header.sb__container__header {
+   background: #fcdc00;
+   border: none;
+}
+.sb__container[data-app="PTS"].fullscreen
+   header.sb__container__header
+   button:last-child
+   svg
+   path {
+   fill: white;
+}
+header.sb__container__header > div {
+   flex: 1;
+}
+header.sb__container__header > div:first-child {
+   flex: 2;
+}
+header.sb__container__header > div:last-child {
+   display: flex;
+   justify-content: flex-end;
+}
+.sb__container.fullscreen header.sb__container__header {
+   height: 60px;
+}

@@ -24,3 +24,6 @@ export { ReactComponent as ScheduleSVG } from "./sidebar/sim/sim_schedule.svg"
 export { ReactComponent as SpaceMgmtSVG } from "./sidebar/sim/sim_spacemgmt.svg"
 export { ReactComponent as WorkflowSVG } from "./sidebar/sim/sim_workflow.svg"
 export { ReactComponent as WorkMgmtSVG } from "./sidebar/sim/sim_workmgmt.svg"
+// container svgs
+export { ReactComponent as MaximizeSVG } from "./container/card_maximize.svg"
+export { ReactComponent as MinimizeSVG } from "./container/card_minimize.svg"

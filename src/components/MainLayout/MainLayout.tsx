@@ -7,10 +7,6 @@ import {
    PersonnelStatsSVG,
    PersonnelMgmtSVG,
    ProjectMgmtSVG,
-   SIMLogoSVG,
-   SIMLogoFullSVG,
-   PTSLogoSVG,
-   PTSLogoFullSVG,
    BuildingStatsSVG,
    BIMSVG,
    AlarmsSVG,
@@ -21,13 +17,15 @@ import {
    SonicboltLogoSVG,
 } from "../../assets/svgs/svg.logo"
 import SonicboltIMG from "../../assets/images/sonicbolt.png"
-type TApp = "SIM" | "PTS"
+import { TApp } from "../../types/AppTypes"
+import { Logo } from "../shared/Logo"
 interface IMainLayoutProps {
    app?: TApp
    children: React.ReactNode
 }
 
 interface ISidebar {
+   app: TApp
    isExpanded: boolean
    toggleSidebar: () => void
 }
@@ -36,7 +34,6 @@ const MainLayout: React.FC<IMainLayoutProps> = ({ app = "PTS", children }) => {
    const { pathname } = useLocation()
    const [isExpanded, setIsExpanded] = useState(false)
    const [isHovered, setIsHovered] = useState(false)
-   const Logo = getLogo(app, isExpanded)
    const sidebarLinks = getSidebarData(app, pathname)
    const toggleSidebar = () => {
       setIsExpanded((prev) => !prev)
@@ -49,7 +46,7 @@ const MainLayout: React.FC<IMainLayoutProps> = ({ app = "PTS", children }) => {
          data-testid="mainlayout"
       >
          <nav className="sb__nav">
-            <div className="sb__logo">{Logo}</div>
+            <Logo app={app} isFull={isExpanded} />
             <button
                className="sb_ham_btn"
                onClick={toggleSidebar}
@@ -84,7 +81,7 @@ const MainLayout: React.FC<IMainLayoutProps> = ({ app = "PTS", children }) => {
             </div>
          </div>
          <div className="sb__content">
-            <SideBarCtx.Provider value={{ isExpanded, toggleSidebar }}>
+            <SideBarCtx.Provider value={{ app, isExpanded, toggleSidebar }}>
                {children}
             </SideBarCtx.Provider>
          </div>
@@ -93,24 +90,11 @@ const MainLayout: React.FC<IMainLayoutProps> = ({ app = "PTS", children }) => {
 }
 
 const SideBarCtx = createContext<ISidebar>({
+   app: "PTS",
    isExpanded: false,
    toggleSidebar() {},
 })
-const getLogo = (app: TApp, isFull: boolean) => {
-   switch (app) {
-      case "SIM":
-         if (isFull)
-            return <SIMLogoFullSVG style={{ width: "160px", height: "55px" }} />
-         return <SIMLogoSVG style={{ width: "51px", height: "51px" }} />
-      case "PTS":
-         if (isFull)
-            return <PTSLogoFullSVG style={{ width: "160px", height: "55px" }} />
-         return <PTSLogoSVG style={{ width: "51px", height: "51px" }} />
 
-      default:
-         return <></>
-   }
-}
 const sidebarData = {
    sim: [
       {
@@ -181,7 +165,7 @@ const getSidebarData = (app: TApp, pathname: string) => {
    switch (app) {
       case "SIM":
          return (
-            <ul>
+            <ul data-testid="linklist">
                {sidebarData["sim"].map((route) => (
                   <Link to={route.link} key={route.link}>
                      <li
@@ -198,7 +182,7 @@ const getSidebarData = (app: TApp, pathname: string) => {
 
       case "PTS":
          return (
-            <ul>
+            <ul data-testid="linklist">
                {sidebarData["pts"].map((route) => (
                   <Link to={route.link} key={route.link}>
                      <li
