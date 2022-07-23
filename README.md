@@ -18,15 +18,15 @@ This library can be installed as a normal npm package.
 
 ## **Usage**
 
-The library consists of React components.
+The library consists of the following React components.
 
 -  MainLayout
 -  Container
 -  Button
 
-### **MainLayout**
+### **1. MainLayout**
 
-This is the main wrapper component that should be placed at the beginning of a module. This wrapper loads the PTS layout by default.
+MainLayout will render the Navbar and Sidebar for the app. This is the main wrapper component that should be placed at the beginning of a module. This wrapper loads the PTS layout by default.
 
 **#NOTE**
 
@@ -48,3 +48,9 @@ return (
     </BrowserRouter>
 )
 ```
+
+#### **Props**
+
+| Name | Options      | Default | Behavior                             |
+| ---- | ------------ | ------- | ------------------------------------ |
+| app  | "SIM", "PTS" | PTS     | Renders either the PTS or SIM layout |
