@@ -14,7 +14,7 @@ Packages needed for the library to run
 
 This library can be installed as a normal npm package.
 
-> npm install @kaijin1234/sonicboltui@latest
+    | npm install @kaijin1234/sonicboltui@latest
 
 ## **Usage**
 
