@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
    title: "Lib/MainLayout",
-   component: MainLayout,
+   component: MainLayout
    // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
    // argTypes: {
    //    backgroundColor: { control: "color" },
@@ -26,5 +26,5 @@ export const MainLayoutComp = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 MainLayoutComp.args = {
    app: "PTS",
-   children: <div style={{ height: "800px" }}>Custom component</div>,
+   children: <div style={{ height: "800px" }}></div>
 }

@@ -14,7 +14,7 @@ Packages needed for the library to run
 
 This library can be installed as a normal npm package.
 
-    | npm install @kaijin1234/sonicboltui@latest
+    npm install @kaijin1234/sonicboltui@latest
 
 ## **Usage**
 
@@ -49,8 +49,31 @@ return (
 )
 ```
 
+![PTS layout](./docs/pics/pts.png)
+
+```jsx
+//import
+import { MainLayout } from "@kaijin1234/sonicboltui"
+
+
+
+//using the component
+//requires BrowserRouter from 'react-router-dom'
+return (
+    <BrowserRouter>
+        <Mainlayout app="SIM">
+            //your code here
+        </MainLayout>
+    </BrowserRouter>
+)
+```
+
+![PTS layout](./docs/pics/sim.png)
+
 #### **Props**
 
 | Name | Options      | Default | Behavior                             |
 | ---- | ------------ | ------- | ------------------------------------ |
 | app  | "SIM", "PTS" | PTS     | Renders either the PTS or SIM layout |
+
+### **2. Container**
