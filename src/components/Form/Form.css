@@ -1,0 +1,18 @@
+.sb__form {
+   background: white;
+   padding: 30px 20px;
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+   border-radius: 5px;
+   box-sizing: border-box;
+}
+
+.sb__form__input {
+   background: rgb(239, 247, 255);
+   border: 1px solid rgb(217, 225, 239);
+   width: 100%;
+   padding: 5px 10px;
+   box-sizing: border-box;
+   border-radius: 3px;
+}
