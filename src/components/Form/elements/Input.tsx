@@ -7,7 +7,9 @@ export interface IInputProps
    > {}
 
 const Input: React.FC<IInputProps> = (props) => {
-   return <input className="sb__form__input" {...props} />
+   return (
+      <input className="sb__form__input" {...props} data-testid="sbforminput" />
+   )
 }
 
 export default Input

@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { ComponentStory, ComponentMeta } from "@storybook/react"
 import { MainLayout } from "../MainLayout"
 import Form from "./Form"
+import { Modal } from "../Modal"
 import { BrowserRouter } from "react-router-dom"
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -20,13 +21,15 @@ const Template: ComponentStory<typeof Form> = (args) => {
    return (
       <BrowserRouter>
          <MainLayout>
-            <Form>
-               <Form.Item>heyy</Form.Item>
-               <Form.Item>yay</Form.Item>
-               <Form.Item>wow</Form.Item>
-               <Form.Item>jjj</Form.Item>
-               <Form.Input placeholder="kjs" />
-            </Form>
+            <Modal show onClose={() => {}}>
+               <Form>
+                  <Form.Item>heyy</Form.Item>
+                  <Form.Item>yay</Form.Item>
+                  <Form.Item>wow</Form.Item>
+                  <Form.Item>jjj</Form.Item>
+                  <Form.Input placeholder="kjs" />
+               </Form>
+            </Modal>
          </MainLayout>
       </BrowserRouter>
    )

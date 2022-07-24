@@ -12,7 +12,11 @@ export interface IFormProps
 
 const Form: React.FC<IFormProps> = ({ children, ...otherProps }) => {
    return (
-      <form className="sb__form sb__shadow" {...otherProps}>
+      <form
+         className="sb__form sb__shadow"
+         {...otherProps}
+         data-testid="sbform"
+      >
          {children}
       </form>
    )
