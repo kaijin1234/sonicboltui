@@ -15,7 +15,7 @@ const Modal: React.FC<IModalProps> = ({
    const ref = useRef(null)
 
    const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-      if (e.currentTarget === ref.current) onClose()
+      if (e.target === ref.current) onClose()
    }
 
    if (!show) return <></>

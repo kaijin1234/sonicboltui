@@ -28,5 +28,9 @@ const Template: ComponentStory<typeof Modal> = (args) => {
 
 export const Label = Template.bind({})
 Label.args = {
-   children: "Modal"
+   children: (
+      <div style={{ background: "white", height: "300px", width: "200px" }}>
+         jshkds
+      </div>
+   )
 }
