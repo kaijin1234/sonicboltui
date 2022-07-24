@@ -76,4 +76,34 @@ return (
 | ---- | ------------ | ------- | ------------------------------------ |
 | app  | "SIM", "PTS" | PTS     | Renders either the PTS or SIM layout |
 
+### **MainLayout Context**
+
+MainLayout also provides context which can be accessed by all children components. These can be accessed by importing the `useSidebarCtx`.
+
+```jsx
+import { useSidebarCtx } from "@kaijin1234/sonicboltui"
+
+//usage
+const { app, isExpanded, toggleSidebar } = useSidebarCtx()
+```
+
+| Name          | Type         | Default | Behavior                                                                       |
+| ------------- | ------------ | ------- | ------------------------------------------------------------------------------ |
+| app           | "SIM", "PTS" | PTS     | Returns if the app is SIM or PTS                                               |
+| isExpanded    | boolean      | false   | Returns a boolean value which indicates whether the Sidebar is expanded or not |
+| toggleSidebar | function     | -       | This function can be used to manually toggle the Sidebar                       |
+
 ### **2. Container**
+
+A customisable container component. This component will not work without `MainLayout`.
+
+```jsx
+import { MainLayout, Container } from "@kaijin1234/sonicboltui"
+
+//usage
+return (
+   <BrowserRouter>
+      <Container title="Chart">//your code here</Container>
+   </BrowserRouter>
+)
+```
